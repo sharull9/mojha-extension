@@ -1,0 +1,15 @@
+{
+  "name": "Mojha.com",
+  "version": "1.0.0",
+  "description": "Check Your seo report instantlly",
+  "manifest_version": 3,
+  "author": "Sharull",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "SEO checkup"
+  },
+  "permissions": ["tabs"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
