@@ -4,6 +4,10 @@
 
 
 @layer components {
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
     .tab {
         @apply border h-10 cursor-pointer border-gray-200 rounded-lg flex items-center p-2 w-full break-all text-sm;
     }
@@ -14,6 +18,14 @@
 
     .tab.active {
         @apply border h-10 cursor-pointer bg-gray-200 border-gray-200 rounded-lg flex items-center p-2;
+    }
+
+    .text-success {
+        @apply text-green-400;
+    }
+
+    .text-danger {
+        @apply text-red-400;
     }
 
     ::-webkit-scrollbar {
@@ -34,4 +46,9 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
+
+    .material-symbols-outlined {
+        font-size: 16px;
+    }
+
 }

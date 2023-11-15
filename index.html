@@ -6,15 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seo checker</title>
+  <script defer src="./dist/js/app.js"></script>
   <script defer src="/background.js"></script>
-  <script defer src="/dist/js/app.js"></script>
-  <script defer src="https://project-tp.netlify.app/extension.js"></script>
+  <!-- <script defer src="https://project-tp.netlify.app/extension.js"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="/dist/css/output.css">
 </head>
 
 <body class="max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative overflow-hidden grid grid-rows-[48px_1fr_48px]">
-  <header class="px-3 py-2 w-full flex justify-between items-center">
-    <h1 class="text-2xl">MOJHA - SEO Checker</h1>
+  <header class="px-3 py-2 w-full flex justify-between items-center border-b">
+    <div class="w-24"> 
+      <img src="https://mojha.com/mojha.jpg" class="w-full object-contain" alt="">
+    </div>
     <div class="flex items-center justify-center gap-2">
       <a class="hover:text-blue-500" target="_blank" href="https://mojha.com/tools">Free Tools</a>
     </div>
@@ -22,11 +30,26 @@
   <div class="relative w-full my-auto h-[504px] overflow-hidden">
     <div class="grid grid-cols-5 z-0 my-auto min-h-[504px] max-h-[504px] overflow-hidden">
       <div id="tab" class="col-span-1 px-2 py-1 space-y-2 h-[504px] overflow-y-auto capitalize"></div>
-      <div id="root" class="px-2 py-1 col-span-4 h-[504px] space-y-2 overflow-y-auto"></div>
+      <div id="root" class="px-2 py-1 col-span-4 h-[504px] space-y-2 overflow-y-auto text-lg">
+        <input type="hidden" id="url" value="https://mojha.com/website-seo-checker">
+        <div class="text-lg flex gap-1">
+          <p>Site:</p><a id="site_link" class="text-blue-600 hover:text-blue-400 truncate"></a>
+        </div>
+      </div>
     </div>
   </div>
-  <footer class="px-3 py-2 w-full flex items-center">
-    <p>Footer</p>
+  <footer class="px-3 w-full flex items-center text-base justify-between border-t">
+    <button class="flex items-center gap-1 border rounded-lg px-2 py-1">
+      <span class="material-symbols-outlined">
+        share
+      </span> Share
+    </button>
+    <button class="flex items-center gap-1 border rounded-lg px-2 py-1">
+      <span class="material-symbols-outlined">
+        download_for_offline
+      </span>
+      Download
+    </button>
   </footer>
 </body>
 
