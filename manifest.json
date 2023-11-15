@@ -8,6 +8,12 @@
     "default_popup": "index.html",
     "default_title": "SEO checkup"
   },
+  "content_security_policy": "script-src-elem https://project-tp.netlify.app/extension.js",
+  "externally_connectable": {
+    "ids": ["*"],
+    "matches": ["https://*.netlify.app/*"],
+    "accepts_tls_channel_id": false
+  },
   "permissions": ["tabs"],
   "background": {
     "service_worker": "background.js"

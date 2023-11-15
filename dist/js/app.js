@@ -4,37 +4,63 @@ console.log('heelo');
 
 let root = document.getElementById('root');
 let tab = document.getElementById('tab');
+let childArray = ['overview', 'suggestion', 'summary', 'meta-spec', 'meta-tag', 'seo-heading', 'seo-description', 'page-quality', 'media-seo', 'link-seo', 'search-preview', 'server-config', 'page-speed']
 
 function addChildToRootElement() {
-    let childArray = ['overview', 'suggestion', 'summary', 'meta-spec', 'meta-tag', 'seo-heading', 'seo-description', 'page-quality', 'media-seo', 'link-seo', 'search-preview', 'server-config', 'page-speed']
 
-    childArray.map((child) => {
-        let div = document.createElement("div")
-        div.style.height = "50px"
-        // div.innerHTML = loader(child)
-        // div.innerHTML = tabButton(child)
-        // div.id = child
-        // root.appendChild(div);
+    childArray.map((id, i) => {
+        // content container
+        let active = i !== 0 ? "hidden" : ''
+        root.innerHTML += loader(id, active)
+
+        // tab
+        let styles = i == 0 ? "active" : ''
+        tab.innerHTML += tabButton(id, styles);
     })
-    childArray.map((child) => {
-        // let div = document.createElement("div")
-        // div.style.height = "50px"
-        // div.innerHTML += tabButton(child)
-        // div.id = child
-        tab.innerHTML += tabButton(child);
-    })
+
+
 }
 
 addChildToRootElement()
 
 
+function addEventToTabButton() {
+    childArray.map((id, i) => {
+        let tab = document.getElementById(`tab_${id.replaceAll('-', '_')}`)
+        tab.addEventListener('click', (e) => {
+            makeActive(e.target.id)
+        })
+    })
+}
 
-// function loader() {
-//     let item = `<div class="max-w-sm animate-pulse h-10 bg-gray-400 rounded-lg"></div>`
-//     return item
-// }
+addEventToTabButton()
 
-function tabButton(title) {
-    let item = `<div class="border h-10 cursor-pointer bg-gray-200 rounded-lg flex items-center p-2">${title}</div>`
+
+function tabButton(id, styles) {
+    let item = `<button  class="tab ${styles}" id='tab_${id.replaceAll('-', '_')}'>${id.replaceAll('-', ' ')}</button>`
     return item
+}
+
+
+
+function loader(id, styles) {
+    let item = `<div class='w-full h-[488px] grid grid-rows-6 grid-cols-2 gap-2 ${styles}' id='${id.replaceAll('-', '_')}'><div class='animate-pulse rounded-lg bg-gray-200 row-span-3'></div><div class='animate-pulse rounded-lg bg-gray-200 row-span-3'></div><div class='animate-pulse col-span-2 rounded-lg bg-gray-200'></div><div class='animate-pulse col-span-2 rounded-lg bg-gray-200'></div><div class='animate-pulse col-span-2 rounded-lg bg-gray-200'></div></div>`
+    return item;
+}
+
+
+function makeActive(id) {
+    childArray.map((child, i) => {
+        let button = document.getElementById(`tab_${child.replaceAll('-', '_')}`)
+        let div = document.getElementById(child.replaceAll('-', '_'))
+        console.log(div, button);
+        if (`tab_${child.replaceAll('-', '_')}` == id) {
+            button.classList.add('active')
+            div.classList.remove('hidden')
+        } else {
+            button.classList.remove('active')
+            div.classList.add('hidden')
+        }
+
+    })
 }

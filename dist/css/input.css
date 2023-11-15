@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .tab {
+        @apply border h-10 cursor-pointer border-gray-200 rounded-lg flex items-center p-2 w-full break-all text-sm;
+    }
+
+    .tab:hover {
+        @apply bg-gray-200
+    }
+
+    .tab.active {
+        @apply border h-10 cursor-pointer bg-gray-200 border-gray-200 rounded-lg flex items-center p-2;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}

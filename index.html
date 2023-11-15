@@ -8,26 +8,26 @@
   <title>Seo checker</title>
   <script defer src="/background.js"></script>
   <script defer src="/dist/js/app.js"></script>
+  <script defer src="https://project-tp.netlify.app/extension.js"></script>
   <link rel="stylesheet" href="/dist/css/output.css">
 </head>
 
-<body class="max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative overflow-hidden">
-  <header class="px-3 py-2 w-full flex justify-between items-center flex-wrap fixed top-0 bg-white z-10 h-12">
-    <div class="">
-      <h1 class="text-2xl">SEO Checker</h1>
-    </div>
+<body class="max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative overflow-hidden grid grid-rows-[48px_1fr_48px]">
+  <header class="px-3 py-2 w-full flex justify-between items-center">
+    <h1 class="text-2xl">MOJHA - SEO Checker</h1>
     <div class="flex items-center justify-center gap-2">
       <a class="hover:text-blue-500" target="_blank" href="https://mojha.com/tools">Free Tools</a>
     </div>
   </header>
-  <div class="relative mt-12 w-full my-auto h-[504px] overflow-hidden">
+  <div class="relative w-full my-auto h-[504px] overflow-hidden">
     <div class="grid grid-cols-5 z-0 my-auto min-h-[504px] max-h-[504px] overflow-hidden">
-      <div id="tab" class="col-span-1 p-1 space-y-2 h-[504px] overflow-y-auto"></div>
-      <div id="root" class="px-3 col-span-4 h-[504px] overflow-y-auto bg-green-400"></div>
+      <div id="tab" class="col-span-1 px-2 py-1 space-y-2 h-[504px] overflow-y-auto capitalize"></div>
+      <div id="root" class="px-2 py-1 col-span-4 h-[504px] space-y-2 overflow-y-auto"></div>
     </div>
-
   </div>
-  <footer class="fixed bottom-0 px-3 py-2 bg-red-300 w-full h-12 z-10"></footer>
+  <footer class="px-3 py-2 w-full flex items-center">
+    <p>Footer</p>
+  </footer>
 </body>
 
 </html>
