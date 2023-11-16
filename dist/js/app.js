@@ -92,6 +92,7 @@ function checkAllDataFetched() {
   if (apiData !== null && apiMobileData !== null && apiDesktopData !== null) {
     clearInterval(myInterval);
     document.getElementById("loading-message").classList.add("hidden");
+    console.log(apiData, apiMobileData, apiDesktopData);
     createResultSummary(
       apiData,
       apiMobileData.lighthouseResult,
@@ -512,9 +513,9 @@ function seoScore(data) {
   let textStatus =
     data.seoScore > 50
       ? data.seoScore > 80
-        ? "stroke-green-400"
-        : "stroke-yellow-500"
-      : "stroke-red-400";
+        ? "text-green-400"
+        : "text-yellow-500"
+      : "text-red-400";
   let item = `<div class="relative flex w-8/12 mx-auto">
                     <svg viewBox="0 0 36 36" class="w-full">
                       <path class="stroke-2 fill-transparent duration-300 transition-all ${status}" style='stroke-linecap: round;' stroke-dasharray="${data.seoScore}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
@@ -720,7 +721,7 @@ function getMetaSpecification(heading, data, analysis, score, type) {
 }
 
 function getMetatagList(tag, value) {
-  let item = `<div class="font-semibold text-gray-800 px-3 py-2 bg-gray-200"> ${tag} </div> <div class="font-bold px-3 py-2 col-span-3"> <p class="">${value}</p> </div>`;
+  let item = `<div class="font-semibold text-gray-800 px-3 py-2 text-sm truncate bg-gray-200"> ${tag} </div> <div class="font-bold text-sm truncate px-3 py-2 col-span-3"> <p class="">${value}</p> </div>`;
   return item;
 }
 
@@ -1231,19 +1232,25 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
   );
   let jsMinification = Math.round(
     jsTotal -
-      desktopAudit.audits["unminified-javascript"].details?.overallSavingsBytes / 1024
+      desktopAudit.audits["unminified-javascript"].details
+        ?.overallSavingsBytes /
+        1024
   );
   let cssOptimisation = Math.round(
     cssMinification -
-      desktopAudit.audits["unused-css-rules"].details?.overallSavingsBytes / 1024
+      desktopAudit.audits["unused-css-rules"].details?.overallSavingsBytes /
+        1024
   );
   let jsOptimisation = Math.round(
     jsMinification -
-      desktopAudit.audits["unused-javascript"].details?.overallSavingsBytes / 1024
+      desktopAudit.audits["unused-javascript"].details?.overallSavingsBytes /
+        1024
   );
   let imageOptimisation = Math.round(
     imageTotal -
-      desktopAudit.audits["uses-optimized-images"].details?.overallSavingsBytes / 1024
+      desktopAudit.audits["uses-optimized-images"].details
+        ?.overallSavingsBytes /
+        1024
   );
 
   let cssSavePercentage = (100 * cssOptimisation) / cssTotal;
@@ -1254,7 +1261,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
     [
       "html",
       "HTML Optimization",
-      desktopAudit.audits["unminified-css"].displayValue,
       {
         originalValue: cssTotal,
         minificationValue: cssMinification,
@@ -1265,7 +1271,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
     [
       "css",
       "CSS Optimization",
-      desktopAudit.audits["unminified-css"].displayValue,
       {
         originalValue: cssTotal,
         minificationValue: cssMinification,
@@ -1276,7 +1281,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
     [
       "javascript",
       "JavaScript Optimization",
-      desktopAudit.audits["unminified-javascript"].displayValue,
       {
         originalValue: jsTotal,
         minificationValue: jsMinification,
@@ -1287,7 +1291,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
     [
       "image",
       "Image Optimization",
-      desktopAudit.audits["uses-responsive-images"].displayValue,
       {
         originalValue: imageTotal,
         minificationValue: jsMinification,
@@ -1297,12 +1300,14 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
     ],
   ];
 
+  console.log(listItem);
+
   let optimisation = document.getElementById("optimisation");
+  optimisation.classList.add("grid", "grid-cols-2", "gap-3");
   listItem.forEach(
     ([
       id,
       title,
-      message,
       { originalValue, minificationValue, compressionValue, chartValue },
     ]) => {
       chartValue = Math.round(100 - chartValue);
@@ -1310,7 +1315,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
         id,
         title,
         chartColor: "circle-success",
-        message,
         chartValue,
         originalValue,
         minificationValue,
@@ -1323,7 +1327,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
 function createOptimisationCard({
   id,
   title,
-  chartColor,
   message,
   chartValue,
   originalValue,
@@ -1331,40 +1334,55 @@ function createOptimisationCard({
   compressionValue,
 }) {
   let minificationLabel = "After Minification";
+  let status =
+    chartValue > 30
+      ? chartValue > 70
+        ? "stroke-red-400"
+        : "stroke-yellow-500"
+      : "stroke-green-400";
+  let textStatus =
+    chartValue > 30
+      ? chartValue > 70
+        ? "text-red-400"
+        : "text-yellow-500"
+      : "text-green-400";
+
+  if (chartValue > 0) chartValue = "-" + chartValue;
 
   if (id == "image") {
     minificationLabel = "After Resize";
   }
-  let item = `<div>
-      <div class="card p-4 h-100" style="background-color: #ecedff;">
-        <div class="p-2">
-          <p class="text-center h4 text-black mb-0" style="font-size: 0.75rem;">${title}</p>
+  let item = `<div class='rounded-lg overflow-hidden border'>
+        <div class="p-2 border-b bg-blue-600/20">
+          <p class="text-center font-medium text-sm">${title}</p>
         </div>
-        <div class="relative d-flex col-12">
-          <svg viewBox="0 0 36 36" class="circular-chart my-auto" style="height: 120px">
-            <path id="optimistaion-${id}" class="circle ${chartColor}" style="fill: #ffffff" stroke-dasharray="${chartValue}, 100" stroke-width="4" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+        <div class="relative flex w-8/12 mx-auto py-3 text-base">
+          <svg viewBox="0 0 36 36" class="w-full">
+            <path class="stroke-2 fill-transparent duration-300 transition-all ${status}" style='stroke-linecap: round;' stroke-dasharray="${chartValue}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
           </svg>
-          <div class="absolute mb-0 w-100 top-50 start-50 translate-middle h4 text-center">
-            <p class="mb-0 h3" id="seo-score">-${chartValue}%</p>
+          <div class="absolute w-full top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-center ${textStatus}">
+            <p class='text-black'>Optimisation</p>
+            <p class="text-3xl font-semibold">${chartValue}%</p>
           </div>
         </div>
-        <div class="pt-2 px-2">
-          <p class="text-center mb-0">${message}</p>
+        <div class="p-2 bg-blue-300">
+          <p class="text-center">Optimisation upto ${compressionValue ? compressionValue : minificationValue} kB</p>
         </div>
-        <div class="py-2 gap-2 border-bottom d-flex">
-          <p class="col-8 mb-0 fs-16 fw-normal text-black">Original</p>
-          <p class="col mb-0 fs-16 fw-normal text-end">${originalValue} kB</p>
-        </div>`;
+        <div class='flex flex-col border divide-y text-sm'>
+          <div class="grid grid-cols-5">
+            <p class="col-span-3 p-2 text-black">Original</p>
+            <p class="col-span-2 p-2 text-right">${originalValue} kB</p>
+          </div>`;
   if (minificationValue != undefined && minificationValue != null) {
-    item += `<div class="pt-2 pb-2 gap-2 d-flex border-bottom">
-                <p class="col-8 mb-0 fs-16 fw-normal text-black">${minificationLabel}</p>
-                <p class="col mb-0 fs-16 fw-normal text-end">${minificationValue} kB</p>
+    item += `<div class="grid grid-cols-5">
+                <p class="col-span-3 p-2 text-black">${minificationLabel}</p>
+                <p class="col-span-2 p-2 text-right">${minificationValue} kB</p>
               </div>`;
   }
   if (compressionValue != undefined && compressionValue != null) {
-    item += `<div class="pt-2 gap-2 d-flex">
-              <p class="col-8 mb-0 fs-16 fw-normal text-black">After Compression</p>
-              <p class="col mb-0 fs-16 fw-normal text-end">${compressionValue} kB</p>
+    item += `<div class="grid grid-cols-5">
+              <p class="col-span-3 p-2 text-black">After Compression</p>
+              <p class="col-span-2 p-2 text-right">${compressionValue} kB</p>
             </div>`;
   }
 
