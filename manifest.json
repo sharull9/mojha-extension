@@ -16,5 +16,11 @@
   "permissions": ["tabs"],
   "background": {
     "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "/dist/assets/16x16.png",
+    "32": "/dist/assets/38x38.png",
+    "48": "/dist/assets/48x48.png",
+    "128": "/dist/assets/128x128.png"
   }
 }
