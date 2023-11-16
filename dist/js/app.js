@@ -3,25 +3,19 @@ let tab = document.getElementById("tab");
 let childArray = [
   "overview",
   "suggestion",
-  "summary-data-list",
+  "summary",
   "meta-spec",
-  "meta-tag",
-  "seo-heading",
-  "seo-description",
+  "seo-analysis",
   "page-quality",
-  "media-seo",
-  "link-seo",
-  "search-preview",
   "server-config",
   "page-speed",
+  "optimisation",
 ];
 
 function addChildToRootElement() {
   childArray.map((id, i) => {
-    // content container
-    let active = i !== 0 ? "hidden" : "";
-    root.innerHTML += loader(id, active);
-    // tab
+    root.innerHTML += container(id);
+
     let styles = i == 0 ? "active" : "";
     tab.innerHTML += tabButton(id, styles);
   });
@@ -39,39 +33,28 @@ function addEventToTabButton() {
 addEventToTabButton();
 
 function tabButton(id, styles) {
-  let item = `<button  class="tab ${styles}" id='tab_${id.replaceAll(
+  let item = `<a href="#${id.replaceAll(
     "-",
     "_"
-  )}'>${id.replaceAll("-", " ")}</button>`;
+  )}" class="tab ${styles} capitalize" id='tab_${id.replaceAll(
+    "-",
+    "_"
+  )}'>${id.replaceAll("-", " ")}</a>`;
   return item;
 }
 
-function loader(id, styles) {
-  let item = `<div class='w-full min-h-[450px] ${styles}' id='${id.replaceAll(
-    "-",
-    "_"
-  )}'>
-                    <div class='w-full min-h-[450px] grid grid-rows-6 grid-cols-2 gap-3'>
-                        <div class='animate-pulse rounded-lg bg-gray-200 row-span-3'></div>
-                        <div class='animate-pulse rounded-lg bg-gray-200 row-span-3'></div>
-                        <div class='animate-pulse col-span-2 rounded-lg bg-gray-200'></div>
-                        <div class='animate-pulse col-span-2 rounded-lg bg-gray-200'></div>
-                        <div class='animate-pulse col-span-2 rounded-lg bg-gray-200'></div>
-                    </div>
-                </div>`;
+function container(id) {
+  let item = `<div class='w-full' id='${id.replaceAll("-", "_")}'></div>`;
   return item;
 }
 
 function makeActive(id) {
   childArray.map((child, i) => {
     let button = document.getElementById(`tab_${child.replaceAll("-", "_")}`);
-    let div = document.getElementById(child.replaceAll("-", "_"));
     if (`tab_${child.replaceAll("-", "_")}` == id) {
       button.classList.add("active");
-      div.classList.remove("hidden");
     } else {
       button.classList.remove("active");
-      div.classList.add("hidden");
     }
   });
 }
@@ -107,11 +90,8 @@ function getSeoResult() {
 
 function checkAllDataFetched() {
   if (apiData !== null && apiMobileData !== null && apiDesktopData !== null) {
-    console.log(
-      apiData,
-      apiMobileData.lighthouseResult,
-      apiDesktopData.lighthouseResult
-    );
+    clearInterval(myInterval);
+    document.getElementById("loading-message").classList.add("hidden");
     createResultSummary(
       apiData,
       apiMobileData.lighthouseResult,
@@ -128,6 +108,31 @@ function checkAllDataFetched() {
       apiDesktopData.lighthouseResult
     );
     createMetaSpecification(
+      apiData,
+      apiMobileData.lighthouseResult,
+      apiDesktopData.lighthouseResult
+    );
+    createSeoAnalysis(
+      apiData,
+      apiMobileData.lighthouseResult,
+      apiDesktopData.lighthouseResult
+    );
+    createPageQuality(
+      apiData,
+      apiMobileData.lighthouseResult,
+      apiDesktopData.lighthouseResult
+    );
+    createPageSpeed(
+      apiData,
+      apiMobileData.lighthouseResult,
+      apiDesktopData.lighthouseResult
+    );
+    createServerConfig(
+      apiData,
+      apiMobileData.lighthouseResult,
+      apiDesktopData.lighthouseResult
+    );
+    createOptimisation(
       apiData,
       apiMobileData.lighthouseResult,
       apiDesktopData.lighthouseResult
@@ -189,7 +194,7 @@ function escapeHTML(unsafeText) {
 }
 
 function createResultSummary(data, mobileAudit, desktopAudit) {
-  let div = document.getElementById("summary_data_list");
+  let div = document.getElementById("summary");
   div.classList.add("grid", "grid-cols-1", "gap-3");
   div.innerHTML = getSummaryComponent(
     "Domain Age",
@@ -521,23 +526,32 @@ function seoScore(data) {
                   </div>
                   <div class='flex flex-col gap-4 justify-center'>
                     <div class='flex flex-col gap-1'>
-                      <p>Passed</p>
+                      <div class='flex justify-between items-center gap-2'>
+                        <p class='text-sm'>Passed</p>
+                        <p>${data.passed}%</p>
+                      </div>
                       <div class='relative bg-gray-100 rounded-lg h-2 overflow-hidden'>
-                        <div class='bg-green-400 absolute top-0 left-0 right-0 h-full rounded-lg' style='width: 20%;'></div>
+                        <div class='bg-green-400 absolute top-0 left-0 right-0 h-full rounded-lg' style='width: ${data.passed}%;'></div>
                       </div>
                     </div>
                     
                     <div class='flex flex-col gap-1'>
-                      <p>Need Improvement</p>
+                      <div class='flex justify-between items-center gap-2'>
+                        <p class='text-sm'>Need Improvement</p>
+                        <p>${data.needImprovement}%</p>
+                      </div>
                       <div class='relative bg-gray-100 rounded-lg h-2 overflow-hidden'>
-                       <div class='bg-yellow-500 absolute top-0 left-0 right-0 h-full rounded-lg' style='width: 20%;'></div>
+                       <div class='bg-yellow-500 absolute top-0 left-0 right-0 h-full rounded-lg' style='width: ${data.needImprovement}%;'></div>
                       </div>
                     </div>
 
                     <div class='flex flex-col gap-1'>
-                      <p>Have to Fixed</p>
+                      <div class='flex justify-between items-center gap-2'>
+                        <p class='text-sm'>Have to Fixed</p>
+                        <p>${data.mustFix}%</p>
+                      </div>
                       <div class='relative bg-gray-100 rounded-lg h-2 overflow-hidden'>
-                       <div class='bg-red-600 absolute top-0 left-0 right-0 h-full rounded-lg' style='width: 20%;'></div>
+                       <div class='bg-red-600 absolute top-0 left-0 right-0 h-full rounded-lg' style='width: ${data.mustFix}%;'></div>
                       </div>
                     </div>
                   </div>
@@ -599,12 +613,10 @@ function pageMetrix(desktopAudit) {
   );
 }
 
-getSeoResult();
-
 function getOverviewComponent(heading, value, styles = "text-black") {
   let item = `<div class='border rounded-lg flex flex-col p-3 items-center'>
-                    <div class='text-4xl font-semibold ${styles}'>${value}</div>
-                    <div class='text-base'>${heading}</div>
+                    <div class='text-2xl font-semibold ${styles}'>${value}</div>
+                    <div class='text-sm'>${heading}</div>
                 </div>`;
   return item;
 }
@@ -660,8 +672,14 @@ function createMetaSpecification(data, mobileAudit, desktopAudit) {
   ];
 
   document.getElementById("meta_spec").innerHTML = `<div>
+  <div class='font-bold my-2 text-xl'>
+  <p>Meta Specification</p>
+  </div>
   <div id='specification_meta'></div>
-  <div id='tags_meta'></div>
+  <div class='font-bold mt-6 mb-2 text-xl'>
+  <p>Meta Tags</p>
+  </div>
+  <div id='tags_meta' class='rounded-lg border overflow-hidden grid grid-cols-4'></div>
   </div>`;
 
   let div = document.getElementById("specification_meta");
@@ -685,14 +703,14 @@ function createMetaSpecification(data, mobileAudit, desktopAudit) {
 function getMetaSpecification(heading, data, analysis, score, type) {
   let status = score == 0 ? "text-red-500" : "text-green-500";
   let icon = score == 0 ? "error" : "check_circle";
-  let item = `<div class="flex flex-col border rounded-lg mb-3 p-2"> <div class="flex flex-row px-4 py-2"> <p class="flex-sm-grow-1 mb-0 font-bold">${heading}</p> </div> <div class=""> <ul class=""> <li>`;
+  let item = `<div class="flex flex-col border rounded-lg mb-3"> <div class="flex flex-row px-4 py-2 border-b"> <p class="font-semibold">${heading}</p> </div> <div class="px-4 pt-2 pb-4"> <ul class=""> <li>`;
   if (type == "title") {
-    item += `<div class="mb-1 fs-16 lh-xs fw-semibold">${data}</div>`;
+    item += `<div class="mb-1 font-bold text-2xl">${data}</div>`;
   } else if (type == "tag") {
     let listItem = "";
     if (data !== "") {
       data.split(", ")?.forEach((element) => {
-        listItem += `<div class="border rounded-lg p-2 m-1"> ${element} </div>`;
+        listItem += `<div class="border rounded-lg px-2 py-1"> ${element} </div>`;
       });
       item += `<div class="flex flex-wrap mb-1">${listItem}</div>`;
     }
@@ -702,6 +720,654 @@ function getMetaSpecification(heading, data, analysis, score, type) {
 }
 
 function getMetatagList(tag, value) {
-  let item = `<div class="flex flex-col flex-md-row border-bottom"> <div class="font-bold p-3 py-2 bg-gray-200"> ${tag} </div> <div class="font-bold p-3 py-2"> <p class="mb-0">${value}</p> </div> </div>`;
+  let item = `<div class="font-semibold text-gray-800 px-3 py-2 bg-gray-200"> ${tag} </div> <div class="font-bold px-3 py-2 col-span-3"> <p class="">${value}</p> </div>`;
+  return item;
+}
+
+function createSeoAnalysisContainer() {
+  let item = `<div class='flex flex-col gap-3'>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Heading Analysis</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='heading-analysis' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Image Analysis</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='image-analysis' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Link Analysis</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='link-analysis' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+              </div>`;
+  document.getElementById("seo_analysis").innerHTML = item;
+}
+
+function createSeoAnalysis(data, mobileAudit, desktopAudit) {
+  createSeoAnalysisContainer();
+  let headingAnalysis = document.getElementById("heading-analysis");
+  headingAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["heading-order"].title,
+    desktopAudit.audits["heading-order"].score
+  );
+  headingAnalysis.innerHTML += createAnalysisSummary(
+    data.heading.analysis,
+    data.heading.score
+  );
+
+  let imageAnalysis = document.getElementById("image-analysis");
+  imageAnalysis.innerHTML += createAnalysisSummary(
+    data.imageContent.analysis.text,
+    data.imageContent.analysis.score
+  );
+  imageAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["image-aspect-ratio"].title,
+    desktopAudit.audits["image-aspect-ratio"].score
+  );
+  imageAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["image-size-responsive"].title,
+    desktopAudit.audits["image-size-responsive"].score
+  );
+  imageAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["unsized-images"].title,
+    desktopAudit.audits["unsized-images"].score
+  );
+
+  let linkAnalysis = document.getElementById("link-analysis");
+  linkAnalysis.innerHTML += createAnalysisSummary(
+    data.linkContent.duplicateLink.analysis,
+    data.linkContent.duplicateLink.score
+  );
+  linkAnalysis.innerHTML += createAnalysisSummary(
+    data.linkContent.duplicateText.analysis,
+    data.linkContent.duplicateText.score
+  );
+  linkAnalysis.innerHTML += createAnalysisSummary(
+    data.linkContent.genericAnchorText.analysis,
+    data.linkContent.genericAnchorText.score
+  );
+  linkAnalysis.innerHTML += createAnalysisSummary(
+    data.linkContent.internalLink.analysis,
+    data.linkContent.internalLink.score
+  );
+  linkAnalysis.innerHTML += createAnalysisSummary(
+    data.linkContent.externalLink.analysis,
+    data.linkContent.externalLink.score
+  );
+}
+
+function createAnalysisSummary(analysis, score) {
+  let status = score == 1 ? "text-green-400" : "text-red-500";
+  let icon = score == 1 ? "check_circle" : "error";
+  let item = `<li class="flex items-start gap-1"> <span class="material-symbols-outlined pt-1 ${status}"> ${icon} </span> ${escapeHTML(
+    analysis
+  )} </li>`;
+  return item;
+}
+
+function createPageQuality(data, mobileAudit, desktopAudit) {
+  createPageQualityContainer();
+
+  let content = document.getElementById("pq-content");
+  content.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["html-has-lang"].title,
+    desktopAudit.audits["html-has-lang"].score
+  );
+  content.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["html-lang-valid"].title,
+    desktopAudit.audits["html-lang-valid"].score
+  );
+  content.innerHTML += createAnalysisSummary(
+    data.content.word.analysis,
+    data.content.word.score
+  );
+  content.innerHTML += createAnalysisSummary(
+    data.content.stopWord.analysis,
+    data.content.stopWord.score
+  );
+  content.innerHTML += createAnalysisSummary(
+    data.content.pageSize.analysis,
+    data.content.pageSize.score
+  );
+  content.innerHTML += createAnalysisSummary(
+    data.content.boldAndStrongTag.analysis,
+    data.content.boldAndStrongTag.score
+  );
+
+  let frame = document.getElementById("pq-frame");
+  frame.innerHTML += createAnalysisSummary(
+    data.content.frameset.analysis,
+    data.content.frameset.score
+  );
+  frame.innerHTML += createAnalysisSummary(
+    data.content.iframe.analysis,
+    data.content.iframe.score
+  );
+
+  let socialNetwork = document.getElementById("pq-social-network");
+  socialNetwork.innerHTML += createAnalysisSummary(
+    data.content.iframe.analysis,
+    data.content.iframe.score
+  );
+}
+
+function createPageQualityContainer() {
+  let item = `<div class='flex flex-col gap-3'>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Content</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='pq-content' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Frames</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='pq-frame' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Social Networks</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='pq-social-network' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+              </div>`;
+  document.getElementById("page_quality").innerHTML = item;
+}
+
+function createPageSpeed(data, mobileAudit, desktopAudit) {
+  createPageSpeedContainer();
+  pageLoadSpeed(data, mobileAudit, desktopAudit);
+
+  let speedAnalysis = document.getElementById("ps-speed-analysis");
+  speedAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["server-response-time"].displayValue,
+    desktopAudit.audits["server-response-time"].score
+  );
+  speedAnalysis.innerHTML += createAnalysisSummary(
+    data.server.compression.analysis,
+    data.server.compression.score
+  );
+  speedAnalysis.innerHTML += createAnalysisSummary(
+    data.protocol.http2.analysis,
+    data.protocol.http2.score
+  );
+  speedAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["render-blocking-resources"].title +
+      " (" +
+      desktopAudit.audits["render-blocking-resources"].displayValue +
+      ")",
+    desktopAudit.audits["render-blocking-resources"].score
+  );
+
+  measuredMetrics(data, mobileAudit, desktopAudit);
+  networkRequestList(data, mobileAudit, desktopAudit);
+}
+
+function createPageSpeedContainer() {
+  let item = `<div class='flex flex-col gap-3'>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Page Load Speed</p>
+                  </div>
+                  <div class='px-4 py-2'>
+                    <ul id='ps-page-load-speed' class='space-y-1 text-base'></ul>
+                  </div>
+                  <div class='flex gap-2 px-4 py-2 border-t'><p>Total time:</p> <p id='page-load-total-time' class='text-blue-800'></p></div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Speed Analysis</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='ps-speed-analysis' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Measured Metrics</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='ps-measured-metrics' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-semibold'>
+                    <p>Network Requests Diagram</p>
+                  </div>
+                  <div class='px-4 pt-2 pb-4'>
+                    <ul id='ps-network-requests-diagram' class='space-y-1 text-base'></ul>
+                  </div>
+                </div>
+              </div>`;
+  document.getElementById("page_speed").innerHTML = item;
+}
+
+function pageLoadSpeed(data, mobileAudit, desktopAudit) {
+  let pageSpeedLoad = document.getElementById("ps-page-load-speed");
+
+  let pageRenderTime =
+    desktopAudit.audits["interactive"].numericValue -
+    desktopAudit.audits["first-contentful-paint"].numericValue;
+  let firstResponseTime =
+    desktopAudit.audits["server-response-time"].numericValue;
+  let resourceLoadTime =
+    desktopAudit.audits["render-blocking-resources"].numericValue;
+  let totalTime = firstResponseTime + resourceLoadTime + pageRenderTime;
+  let items = [
+    ["First response", firstResponseTime],
+    ["Resources Loaded", resourceLoadTime],
+    ["Page Rendered", pageRenderTime],
+  ];
+  let startPoint = 0;
+
+  pageSpeedLoad.innerHTML += "";
+  items.forEach(([title, value]) => {
+    let currentEnd = (value / totalTime) * 100;
+    pageSpeedLoad.innerHTML += getGraphList(
+      title,
+      `${parseFloat(value / 1000).toFixed(1)}ms`,
+      startPoint,
+      currentEnd
+    );
+    startPoint += currentEnd;
+  });
+
+  document.getElementById("page-load-total-time").innerHTML += `${parseFloat(
+    totalTime / 1000
+  ).toFixed(2)} sec`;
+}
+
+function getGraphList(title, value, startTime, endTime, color = "primary") {
+  let item = ` <div class="items-center gap-1 grid grid-cols-12 text-sm">
+    <div class="col-span-3">
+      <p class="mb-0 truncate font-medium">${title}</p>
+    </div>
+    <div class="relative col-span-7 h-2 bg-gray-100 w-full rounded-lg overflow-hidden">
+      <div class="absolute w-full h-2 bg-blue-700 top-0 bottom-0" style="width: ${endTime}%; left: ${startTime}%; opacity: 0.75;">
+      </div>
+    </div>
+    <div class="col-span-2">
+      <p class="text-end font-medium">${value}</p>
+    </div>
+  </div>`;
+  return item;
+}
+
+function measuredMetrics(data, mobileAudit, desktopAudit) {
+  let div = document.getElementById("ps-measured-metrics");
+
+  let firstContentfulPaintDV =
+    desktopAudit.audits["first-contentful-paint"].displayValue;
+  let largestContentfulPaintDV =
+    desktopAudit.audits["largest-contentful-paint"].displayValue;
+  let speedIndexDV = desktopAudit.audits["speed-index"].displayValue;
+  let totalBlockingTimeDV =
+    desktopAudit.audits["total-blocking-time"].displayValue;
+  let cumulativeLayoutShiftDV =
+    desktopAudit.audits["cumulative-layout-shift"].displayValue;
+  let timeToInteractiveDV = desktopAudit.audits["interactive"].displayValue;
+
+  div.innerHTML += getGraphList(
+    "FCP (First Contentful Paint)",
+    firstContentfulPaintDV,
+    0,
+    10
+  );
+  div.innerHTML += getGraphList(
+    "LCP (Largest Contentful Paint)",
+    largestContentfulPaintDV,
+    0,
+    60
+  );
+  div.innerHTML += getGraphList("SI (Speed Index)", speedIndexDV, 0, 80);
+  div.innerHTML += getGraphList(
+    "TBT (Total Blocking Time)",
+    totalBlockingTimeDV,
+    0,
+    10
+  );
+  div.innerHTML += getGraphList(
+    "CLS (Cumulative Layout Shift)",
+    cumulativeLayoutShiftDV,
+    0,
+    0
+  );
+  div.innerHTML += getGraphList(
+    "TTI (Time to Interactive)",
+    timeToInteractiveDV,
+    0,
+    70
+  );
+}
+
+function networkRequestList(data, mobileAudit, desktopAudit) {
+  let networkRequestDiagram = document.getElementById(
+    "ps-network-requests-diagram"
+  );
+  let arrayItems = desktopAudit.audits["network-requests"].details.items;
+  let itemsLength =
+    desktopAudit.audits["network-requests"].details.items.length;
+  let totalTime = 0;
+
+  for (let itemIndex = 0; itemIndex < itemsLength; itemIndex++) {
+    if (arrayItems[itemIndex].finished == true) {
+      if (totalTime < arrayItems[itemIndex].networkEndTime) {
+        totalTime = arrayItems[itemIndex].networkEndTime;
+      }
+    } else {
+      if (totalTime < arrayItems[itemIndex].networkRequestTime) {
+        totalTime = arrayItems[itemIndex].networkRequestTime;
+      }
+    }
+  }
+  for (let i = 0; i < itemsLength; i++) {
+    let currentStart = (arrayItems[i].networkRequestTime / totalTime) * 100;
+    let currentEnd = (arrayItems[i].networkEndTime / totalTime) * 100;
+    let requestTime =
+      arrayItems[i].networkEndTime - arrayItems[i].networkRequestTime;
+    networkRequestDiagram.innerHTML += getGraphList(
+      arrayItems[i].url,
+      formatTimeForRequest(requestTime),
+      currentStart,
+      currentEnd
+    );
+  }
+}
+
+function formatTimeForRequest(requestTime) {
+  if (requestTime < 1000) {
+    return parseFloat(requestTime).toFixed(1) + "ms";
+  } else if (requestTime > 1000) {
+    return parseFloat(requestTime / 1000).toFixed(1) + "s";
+  } else if (requestTime > 1000 * 60) {
+    return parseFloat(requestTime / (1000 * 60)).toFixed(1) + "min";
+  }
+}
+
+function createServerConfig(data, mobileAudit, desktopAudit) {
+  createServerConfigContainer();
+  let serverAnalysis = document.getElementById("server-analysis");
+
+  serverAnalysis.innerHTML = createAnalysisSummary(
+    desktopAudit.audits["http-status-code"].title,
+    desktopAudit.audits["http-status-code"].score
+  );
+  serverAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["is-on-https"].title,
+    desktopAudit.audits["is-on-https"].score
+  );
+  serverAnalysis.innerHTML += createAnalysisSummary(
+    desktopAudit.audits["redirects"].title,
+    desktopAudit.audits["redirects"].score
+  );
+  serverAnalysis.innerHTML += createAnalysisSummary(
+    data.wwwRedirection.analysis,
+    data.wwwRedirection.score
+  );
+
+  let serverLists = document.getElementById("server-list");
+  serverLists.innerHTML += getServerList(data.httpHeader.header);
+}
+
+function createServerConfigContainer() {
+  let item = `<div class='flex gap-3 flex-col'>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-medium'>Server Analysis</div>
+                  <div class='px-4 pt-2 pb-4' id='server-analysis'></div>
+                </div>
+                <div class='border rounded-lg'>
+                  <div class='px-4 py-2 border-b font-medium'>Server Redirection List</div>
+                  <div class='overflow-hidden' id='server-list'></div>
+                </div>
+              </div>`;
+
+  document.getElementById("server_config").innerHTML = item;
+}
+
+function getServerList(headers) {
+  let listValue = Object.entries(headers);
+  let item = "";
+  listValue.forEach(([key, value], i) => {
+    let spaceBetweenItems = "";
+    if (!isNaN(Number(key))) {
+      if (i != 0) {
+        spaceBetweenItems = "mt-5";
+        item += `<div class="flex flex-col justify-center items-center mt-5"> <span class="material-symbols-outlined text-blue-700 text-2xl">arrow_downward</span> <p class='text-sm'>Redirected to</p> </div>`;
+      }
+      item += `<div class="${spaceBetweenItems} divide-y">`;
+      let valueItem = Object.entries(value);
+      valueItem.forEach(([title, description]) => {
+        item += `<div class="grid grid-cols-6 text-sm font-medium"> <div class="bg-gray-100 col-span-2 capitalize px-4 py-2"> ${title} </div> <div class="col-span-4 px-4 py-2"> <p>${description}</p> </div> </div>`;
+      });
+      item += `</div>`;
+    }
+  });
+  return item;
+}
+
+let messageIndex = 0;
+let messages = [
+  "Analyzing Website Details...",
+  "Analyzing Website Content...",
+  "Analyzing Meta Title...",
+  "Analyzing Meta Description...",
+  "Analyzing HTTP Status...",
+  "Analyzing Doctype...",
+  "Analyzing Robots.txt...",
+  "Analyzing Redirects...",
+  "Analyzing Images...",
+  "Analyzing Links...",
+  "Analyzing Plugins...",
+  "Analyzing Page Speed...",
+];
+function loadinMessage() {
+  let item = `<div class="loader-2 w-2/6 mx-auto"></div>
+              <div id='message' class='flex mt-2 items-center justify-center'></div>`;
+  document.getElementById("loading-message").innerHTML = item;
+  messages.map((message, i) => {
+    let status = i !== messageIndex ? "hidden" : "";
+    document.getElementById(
+      "message"
+    ).innerHTML += `<div class='${status} transition-all duration-200'>${message}</div>`;
+  });
+}
+loadinMessage();
+
+const myInterval = setInterval(() => {
+  messageIndex++;
+  let children = document.getElementById("message").children;
+  for (var i = 0; i < children.length; i++) {
+    if (i === messageIndex) {
+      children[i].classList.remove("hidden");
+    } else {
+      children[i].classList.add("hidden");
+    }
+  }
+}, 4000);
+
+function createOptimisation(data, mobileAudit, desktopAudit) {
+  let cssTotal = 0;
+  let jsTotal = 0;
+  let imageTotal = 0;
+  desktopAudit.audits["network-requests"].details.items.forEach((item) => {
+    if (item.mimeType != null && item.mimeType != undefined) {
+      if (item.mimeType == "text/css") {
+        cssTotal += item.transferSize;
+      }
+      if (item.mimeType == "application/javascript") {
+        jsTotal += item.transferSize;
+      }
+      if (item.mimeType?.includes("image") == true) {
+        imageTotal += item.transferSize;
+      }
+    }
+  });
+
+  cssTotal = Math.round(cssTotal / 1024);
+  jsTotal = Math.round(jsTotal / 1024);
+  imageTotal = Math.round(imageTotal / 1024);
+
+  let cssMinification = Math.round(
+    cssTotal -
+      desktopAudit.audits["unminified-css"].details?.overallSavingsBytes / 1024
+  );
+  let jsMinification = Math.round(
+    jsTotal -
+      desktopAudit.audits["unminified-javascript"].details?.overallSavingsBytes / 1024
+  );
+  let cssOptimisation = Math.round(
+    cssMinification -
+      desktopAudit.audits["unused-css-rules"].details?.overallSavingsBytes / 1024
+  );
+  let jsOptimisation = Math.round(
+    jsMinification -
+      desktopAudit.audits["unused-javascript"].details?.overallSavingsBytes / 1024
+  );
+  let imageOptimisation = Math.round(
+    imageTotal -
+      desktopAudit.audits["uses-optimized-images"].details?.overallSavingsBytes / 1024
+  );
+
+  let cssSavePercentage = (100 * cssOptimisation) / cssTotal;
+  let jsSavePercentage = (100 * jsOptimisation) / jsTotal;
+  let imageSavePercentage = (100 * imageOptimisation) / imageTotal;
+
+  let listItem = [
+    [
+      "html",
+      "HTML Optimization",
+      desktopAudit.audits["unminified-css"].displayValue,
+      {
+        originalValue: cssTotal,
+        minificationValue: cssMinification,
+        compressionValue: cssOptimisation,
+        chartValue: cssSavePercentage,
+      },
+    ],
+    [
+      "css",
+      "CSS Optimization",
+      desktopAudit.audits["unminified-css"].displayValue,
+      {
+        originalValue: cssTotal,
+        minificationValue: cssMinification,
+        compressionValue: cssOptimisation,
+        chartValue: cssSavePercentage,
+      },
+    ],
+    [
+      "javascript",
+      "JavaScript Optimization",
+      desktopAudit.audits["unminified-javascript"].displayValue,
+      {
+        originalValue: jsTotal,
+        minificationValue: jsMinification,
+        compressionValue: jsOptimisation,
+        chartValue: jsSavePercentage,
+      },
+    ],
+    [
+      "image",
+      "Image Optimization",
+      desktopAudit.audits["uses-responsive-images"].displayValue,
+      {
+        originalValue: imageTotal,
+        minificationValue: jsMinification,
+        compressionValue: imageOptimisation,
+        chartValue: imageSavePercentage,
+      },
+    ],
+  ];
+
+  let optimisation = document.getElementById("optimisation");
+  listItem.forEach(
+    ([
+      id,
+      title,
+      message,
+      { originalValue, minificationValue, compressionValue, chartValue },
+    ]) => {
+      chartValue = Math.round(100 - chartValue);
+      optimisation.innerHTML += createOptimisationCard({
+        id,
+        title,
+        chartColor: "circle-success",
+        message,
+        chartValue,
+        originalValue,
+        minificationValue,
+        compressionValue,
+      });
+    }
+  );
+}
+
+function createOptimisationCard({
+  id,
+  title,
+  chartColor,
+  message,
+  chartValue,
+  originalValue,
+  minificationValue,
+  compressionValue,
+}) {
+  let minificationLabel = "After Minification";
+
+  if (id == "image") {
+    minificationLabel = "After Resize";
+  }
+  let item = `<div>
+      <div class="card p-4 h-100" style="background-color: #ecedff;">
+        <div class="p-2">
+          <p class="text-center h4 text-black mb-0" style="font-size: 0.75rem;">${title}</p>
+        </div>
+        <div class="relative d-flex col-12">
+          <svg viewBox="0 0 36 36" class="circular-chart my-auto" style="height: 120px">
+            <path id="optimistaion-${id}" class="circle ${chartColor}" style="fill: #ffffff" stroke-dasharray="${chartValue}, 100" stroke-width="4" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+          </svg>
+          <div class="absolute mb-0 w-100 top-50 start-50 translate-middle h4 text-center">
+            <p class="mb-0 h3" id="seo-score">-${chartValue}%</p>
+          </div>
+        </div>
+        <div class="pt-2 px-2">
+          <p class="text-center mb-0">${message}</p>
+        </div>
+        <div class="py-2 gap-2 border-bottom d-flex">
+          <p class="col-8 mb-0 fs-16 fw-normal text-black">Original</p>
+          <p class="col mb-0 fs-16 fw-normal text-end">${originalValue} kB</p>
+        </div>`;
+  if (minificationValue != undefined && minificationValue != null) {
+    item += `<div class="pt-2 pb-2 gap-2 d-flex border-bottom">
+                <p class="col-8 mb-0 fs-16 fw-normal text-black">${minificationLabel}</p>
+                <p class="col mb-0 fs-16 fw-normal text-end">${minificationValue} kB</p>
+              </div>`;
+  }
+  if (compressionValue != undefined && compressionValue != null) {
+    item += `<div class="pt-2 gap-2 d-flex">
+              <p class="col-8 mb-0 fs-16 fw-normal text-black">After Compression</p>
+              <p class="col mb-0 fs-16 fw-normal text-end">${compressionValue} kB</p>
+            </div>`;
+  }
+
+  item += `</div></div>`;
   return item;
 }

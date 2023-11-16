@@ -8,7 +8,6 @@
     "default_popup": "index.html",
     "default_title": "SEO checkup"
   },
-  "content_security_policy": "script-src-elem https://project-tp.netlify.app/extension.js",
   "externally_connectable": {
     "ids": ["*"],
     "matches": ["https://*.netlify.app/*"],

@@ -20,7 +20,7 @@
 
 <body class="max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative overflow-hidden grid grid-rows-[48px_1fr_48px]">
   <header class="px-3 py-2 w-full flex justify-between items-center border-b">
-    <div class="w-24"> 
+    <div class="w-24">
       <img src="https://mojha.com/mojha.jpg" class="w-full object-contain" alt="">
     </div>
     <div class="flex items-center justify-center gap-2">
@@ -29,11 +29,13 @@
   </header>
   <div class="relative w-full my-auto h-[504px] overflow-hidden">
     <div class="grid grid-cols-5 z-0 my-auto min-h-[504px] max-h-[504px] overflow-hidden">
-      <div id="tab" class="col-span-1 px-2 py-1 space-y-2 h-[504px] overflow-y-auto capitalize"></div>
-      <div id="root" class="px-2 py-1 col-span-4 h-[504px] space-y-2 overflow-y-auto text-lg">
+      <div id="tab" class="col-span-1 p-2 space-y-2 h-[504px] overflow-y-auto capitalize"></div>
+      <div id="root" class="p-2 col-span-4 h-[504px] space-y-2 overflow-y-auto text-lg">
         <input type="hidden" id="url" value="https://mojha.com/website-seo-checker">
         <div class="text-lg flex gap-1">
           <p>Site:</p><a id="site_link" class="text-blue-600 hover:text-blue-400 truncate"></a>
+        </div>
+        <div id="loading-message" class="py-40">
         </div>
       </div>
     </div>
