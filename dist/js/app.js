@@ -44,7 +44,7 @@ function tabButton(id, styles) {
 }
 
 function container(id) {
-  let item = `<div class='w-full' id='${id.replaceAll("-", "_")}'></div>`;
+  let item = `<section class='w-full' id='${id.replaceAll("-", "_")}'></section>`;
   return item;
 }
 
@@ -92,7 +92,6 @@ function checkAllDataFetched() {
   if (apiData !== null && apiMobileData !== null && apiDesktopData !== null) {
     clearInterval(myInterval);
     document.getElementById("loading-message").classList.add("hidden");
-    console.log(apiData, apiMobileData, apiDesktopData);
     createResultSummary(
       apiData,
       apiMobileData.lighthouseResult,
@@ -1300,8 +1299,6 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
     ],
   ];
 
-  console.log(listItem);
-
   let optimisation = document.getElementById("optimisation");
   optimisation.classList.add("grid", "grid-cols-2", "gap-3");
   listItem.forEach(
@@ -1389,3 +1386,26 @@ function createOptimisationCard({
   item += `</div></div>`;
   return item;
 }
+
+const sections = document.querySelectorAll("section[id]");
+document.getElementById("root").addEventListener("scroll", navHighlighter);
+
+function navHighlighter() {
+  let scrollY = document.getElementById("root").scrollTop;
+  sections.forEach(current => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    const sectionId = current.getAttribute("id");
+    console.log(sectionHeight, sectionTop, sectionId);
+    
+    if (
+      scrollY > sectionTop &&
+      scrollY <= sectionTop + sectionHeight
+    ){
+      document.querySelector(`#tab_${sectionId}`).classList.add("active");
+    } else {
+      document.querySelector(`#tab_${sectionId}`).classList.remove("active");
+    }
+  });
+}
+
