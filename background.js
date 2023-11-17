@@ -7,3 +7,13 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
 
   getSeoResult()
 });
+
+// var googleAuth = new OAuth2("google", {
+//   client_id: "289577304485",
+//   client_secret: "289577304485-q9tc9dqj8jr0j8u71ud8epipskm8pmtr.apps.googleusercontent.com",
+//   api_scope: "https://www.googleapis.com/auth/tasks",
+// });
+
+// googleAuth.authorize(function () {
+//   // Ready for action
+// });

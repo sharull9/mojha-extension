@@ -19,22 +19,26 @@
 </head>
 
 <body class="max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative overflow-hidden grid grid-rows-[48px_1fr_48px]">
-  <header class="px-3 py-2 w-full flex justify-between items-center border-b">
-    <div class="w-24">
-      <img src="https://mojha.com/mojha.jpg" class="w-full object-contain" alt="">
+  <header class="px-3 w-full grid grid-cols-12 gap-3 border-b h-12 items-center text-sm">
+    <div class="col-span-2">
+      <img src="https://mojha.com/mojha.jpg" class="w-12 object-contain" alt="">
     </div>
-    <div class="text-lg flex gap-1">
-      <p>Url:</p><a id="site_link" class="text-blue-600 hover:text-blue-400 truncate font-semibold"></a>
+    <div class="flex gap-1 items-center col-span-8">
+      <p>Url:</p><a id="site_link" class="text-blue-600 truncate font-semibold"></a>
+      <a href="/" class="text-sm whitespace-nowrap hover:text-blue-600">View Report</a>
     </div>
-    <div class="flex items-center justify-center gap-2">
+    <div class="flex items-center justify-end gap-2 col-span-2">
       <a class="hover:text-blue-500" target="_blank" href="https://mojha.com/tools">Free Tools</a>
     </div>
   </header>
+  <input type="hidden" id="url" value="https://mojha.com/website-seo-checker">
   <div class="relative w-full my-auto h-[504px] overflow-hidden">
     <div class="grid grid-cols-5 z-0 my-auto min-h-[504px] max-h-[504px] overflow-hidden">
-      <div id="tab" class="col-span-1 p-2 space-y-2 h-[504px] overflow-y-auto capitalize border-r"></div>
-      <div id="root" class="p-2 col-span-4 h-[504px] space-y-2 overflow-y-auto text-lg">
-        <input type="hidden" id="url" value="https://mojha.com/website-seo-checker">
+      <div id="tab" class="col-span-1 h-[504px] overflow-y-auto capitalize border-r">
+        <!-- <button id="login" class="tab">login</button>
+        <button id="signOut" class="tab">signout</button> -->
+      </div>
+      <div id="root" class="p-2 col-span-4 h-[504px] space-y-5 overflow-y-auto text-lg">
         <div id="loading-message" class="py-40">
         </div>
       </div>
@@ -53,6 +57,8 @@
       Download
     </button>
   </footer>
+  <script src="/dist/js/oauth.js"></script>
+  <!-- <script src="/oauth2/oauth2.js"></script> -->
 </body>
 
 </html>

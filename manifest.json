@@ -8,12 +8,25 @@
     "default_popup": "index.html",
     "default_title": "SEO checkup"
   },
+  "content_scripts": [
+    {
+      "matches": ["http://www.google.com/robots.txt*"],
+      "js": ["oauth2/oauth2_inject.js"],
+      "run_at": "document_start"
+    }
+  ],
   "externally_connectable": {
     "ids": ["*"],
     "matches": ["https://*.netlify.app/*"],
     "accepts_tls_channel_id": false
   },
-  "permissions": ["tabs"],
+  "permissions": [
+    "tabs",
+    "https://accounts.google.com/o/oauth2/token",
+    "identity",
+    "identity.email",
+    "email"
+  ],
   "background": {
     "service_worker": "background.js"
   },
@@ -22,5 +35,9 @@
     "32": "/dist/assets/38x38.png",
     "48": "/dist/assets/48x48.png",
     "128": "/dist/assets/128x128.png"
+  },
+  "oauth2": {
+    "client_id": "289577304485-q9tc9dqj8jr0j8u71ud8epipskm8pmtr.apps.googleusercontent.com",
+    "scopes": ["email openid profile"]
   }
 }

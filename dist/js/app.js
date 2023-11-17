@@ -36,7 +36,7 @@ function tabButton(id, styles) {
   let item = `<a href="#${id.replaceAll(
     "-",
     "_"
-  )}" class="tab ${styles} capitalize" id='tab_${id.replaceAll(
+  )}" class="tab ${styles} capitalize text-sm" id='tab_${id.replaceAll(
     "-",
     "_"
   )}'>${id.replaceAll("-", " ")}</a>`;
@@ -44,7 +44,10 @@ function tabButton(id, styles) {
 }
 
 function container(id) {
-  let item = `<section class='w-full' id='${id.replaceAll("-", "_")}'></section>`;
+  let item = `<section class='w-full' id='${id.replaceAll(
+    "-",
+    "_"
+  )}'></section>`;
   return item;
 }
 
@@ -91,7 +94,7 @@ function getSeoResult() {
 function checkAllDataFetched() {
   if (apiData !== null && apiMobileData !== null && apiDesktopData !== null) {
     clearInterval(myInterval);
-    document.getElementById("loading-message").classList.add("hidden");
+    document.getElementById("loading-message").remove();
     console.log(apiData);
     createResultSummary(
       apiData,
@@ -196,7 +199,7 @@ function escapeHTML(unsafeText) {
 
 function createResultSummary(data, mobileAudit, desktopAudit) {
   let div = document.getElementById("summary");
-  div.classList.add("grid", "grid-cols-1", "gap-3");
+  div.classList.add("grid", "grid-cols-1", "gap-5");
   div.innerHTML = getSummaryComponent(
     "Domain Age",
     [data.domain.domainAge, data.domain.analysis],
@@ -462,10 +465,22 @@ function getSummaryComponent(heading, dataArray, statusArray) {
 function createResultOverview(data, mobileAudit, desktopAudit) {
   let div = document.getElementById("overview");
   div.classList.remove("grid");
-  div.classList.add("flex", "flex-col", "gap-3");
-  div.innerHTML = `<div class='grid grid-cols-2 gap-3 col-span-2' id='seo-score'></div>
-    <div class='grid grid-cols-3 gap-3 col-span-2' id='website-overview'></div>
-    <div class='grid grid-cols-2 gap-3 col-span-2' id='website-performance'></div>`;
+  // div.classList.add("flex", "flex-col", "gap-3");
+  div.innerHTML = `
+  <div class='mb-2'><h2 class='text-xl font-semibold'>Overview</h2></div>
+  <div class='grid grid-cols-2 gap-3'>
+    <div class='grid grid-cols-2 gap-3 grid-rows-[auto_auto_auto]' id='website'>
+    </div>
+    <div>
+      <div class='' id='seo-score'></div>
+      
+    </div>
+  </div>
+    
+    `;
+  // `<div class='grid grid-cols-3 gap-3 col-span-2' id='website-overview'></div>
+  // <div class='grid grid-cols-3 gap-3 col-span-2' id='website-performance'></div>
+  // <div class='grid grid-cols-2 gap-3 col-span-2' id='seo-score'></div>`;
 
   seoScore(data.overview);
   websiteOverviewComponent(data);
@@ -473,7 +488,7 @@ function createResultOverview(data, mobileAudit, desktopAudit) {
 }
 
 function websiteOverviewComponent(data) {
-  let div = document.getElementById("website-overview");
+  let div = document.getElementById("website");
   div.innerHTML = getOverviewComponent(
     "Domain Authority",
     data.authority.domainAuthority,
@@ -485,7 +500,7 @@ function websiteOverviewComponent(data) {
     "text-blue-600"
   );
   div.innerHTML += getOverviewComponent(
-    "Links",
+    "Back Links",
     data.authority.links,
     "text-blue-600"
   );
@@ -516,7 +531,7 @@ function seoScore(data) {
         ? "text-green-400"
         : "text-yellow-500"
       : "text-red-400";
-  let item = `<div class="relative flex w-8/12 mx-auto">
+  let item = `<div class="relative flex w-7/12 mx-auto">
                     <svg viewBox="0 0 36 36" class="w-full">
                       <path class="stroke-2 fill-transparent duration-300 transition-all ${status}" style='stroke-linecap: round;' stroke-dasharray="${data.seoScore}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                     </svg>
@@ -525,7 +540,7 @@ function seoScore(data) {
                       <p class="text-3xl font-semibold">${data.seoScore}%</p>
                     </div>
                   </div>
-                  <div class='flex flex-col gap-4 justify-center'>
+                  <div class='flex flex-col gap-3 justify-center'>
                     <div class='flex flex-col gap-1'>
                       <div class='flex justify-between items-center gap-2'>
                         <p class='text-sm'>Passed</p>
@@ -585,7 +600,7 @@ function getTaskList(heading, priority) {
 function pageMetrix(desktopAudit) {
   let audits = desktopAudit.audits;
   let categories = desktopAudit.categories;
-  let div = document.getElementById("website-performance");
+  let div = document.getElementById("website");
 
   let performanceScore = Math.round(categories["performance"].score * 100);
   let performaceStatus =
@@ -595,7 +610,7 @@ function pageMetrix(desktopAudit) {
         : "text-yellow-500"
       : "text-red-400";
 
-  div.innerHTML = getOverviewComponent(
+  div.innerHTML += getOverviewComponent(
     "Performance",
     performanceScore,
     performaceStatus
@@ -604,10 +619,10 @@ function pageMetrix(desktopAudit) {
     "Page Load Time",
     audits["speed-index"].displayValue
   );
-  div.innerHTML += getOverviewComponent(
-    "Page size",
-    audits["speed-index"].displayValue
-  );
+  // div.innerHTML += getOverviewComponent(
+  //   "Page size",
+  //   audits["speed-index"].displayValue
+  // );
   div.innerHTML += getOverviewComponent(
     "Requests",
     audits["network-requests"].details.items.length
@@ -615,9 +630,9 @@ function pageMetrix(desktopAudit) {
 }
 
 function getOverviewComponent(heading, value, styles = "text-black") {
-  let item = `<div class='border rounded-lg flex flex-col p-3 items-center'>
+  let item = `<div class='border rounded-lg flex flex-col py-3 px-1 justify-center items-center hover:scale-105 transition-all duration-100 hover:bg-blue-100/20 cursor-pointer'>
                     <div class='text-2xl font-semibold ${styles}'>${value}</div>
-                    <div class='text-sm'>${heading}</div>
+                    <div class='text-sm text-center'>${heading}</div>
                 </div>`;
   return item;
 }
@@ -1364,7 +1379,9 @@ function createOptimisationCard({
           </div>
         </div>
         <div class="p-2 bg-blue-300">
-          <p class="text-center">Optimisation upto ${compressionValue ? compressionValue : minificationValue} kB</p>
+          <p class="text-center">Optimisation upto ${
+            compressionValue ? compressionValue : minificationValue
+          } kB</p>
         </div>
         <div class='flex flex-col border divide-y text-sm'>
           <div class="grid grid-cols-5">
@@ -1393,19 +1410,15 @@ document.getElementById("root").addEventListener("scroll", navHighlighter);
 
 function navHighlighter() {
   let scrollY = document.getElementById("root").scrollTop;
-  sections.forEach(current => {
+  sections.forEach((current) => {
     const sectionHeight = current.offsetHeight;
     const sectionTop = current.offsetTop - 50;
     const sectionId = current.getAttribute("id");
-    
-    if (
-      scrollY > sectionTop &&
-      scrollY <= sectionTop + sectionHeight
-    ){
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
       document.querySelector(`#tab_${sectionId}`).classList.add("active");
     } else {
       document.querySelector(`#tab_${sectionId}`).classList.remove("active");
     }
   });
 }
-
