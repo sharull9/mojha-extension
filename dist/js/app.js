@@ -92,6 +92,7 @@ function checkAllDataFetched() {
   if (apiData !== null && apiMobileData !== null && apiDesktopData !== null) {
     clearInterval(myInterval);
     document.getElementById("loading-message").classList.add("hidden");
+    console.log(apiData);
     createResultSummary(
       apiData,
       apiMobileData.lighthouseResult,
@@ -451,7 +452,7 @@ function getSummaryComponent(heading, dataArray, statusArray) {
   for (i = 0; i < dataArray.length; i++) {
     let status = statusArray[i] == 0 ? "text-red-400" : "text-green-400";
     let icon = statusArray[i] == 0 ? "error" : "check_circle";
-    item += `<li><div class="flex text-base gap-1"><span class="material-symbols-outlined ${status} align-text-top pt-1"> ${icon}</span> ${escapeHTML(
+    item += `<li><div class="flex text-base gap-1"><span class="material-symbols-outlined ${status} align-text-top"> ${icon}</span> ${escapeHTML(
       dataArray[i]
     )}</div></li>`;
   }
@@ -484,8 +485,8 @@ function websiteOverviewComponent(data) {
     "text-blue-600"
   );
   div.innerHTML += getOverviewComponent(
-    "Rank",
-    data.authority.mozRank,
+    "Links",
+    data.authority.links,
     "text-blue-600"
   );
 }
@@ -705,7 +706,7 @@ function getMetaSpecification(heading, data, analysis, score, type) {
   let icon = score == 0 ? "error" : "check_circle";
   let item = `<div class="flex flex-col border rounded-lg mb-3"> <div class="flex flex-row px-4 py-2 border-b"> <p class="font-semibold">${heading}</p> </div> <div class="px-4 pt-2 pb-4"> <ul class=""> <li>`;
   if (type == "title") {
-    item += `<div class="mb-1 font-bold text-2xl">${data}</div>`;
+    item += `<div class="mb-1 font-bold text-xl">${data}</div>`;
   } else if (type == "tag") {
     let listItem = "";
     if (data !== "") {
@@ -715,7 +716,7 @@ function getMetaSpecification(heading, data, analysis, score, type) {
       item += `<div class="flex flex-wrap mb-1">${listItem}</div>`;
     }
   }
-  item += ` <div class="${status} flex text-base gap-1"> <span class="material-symbols-outlined align-text-top pt-1"> ${icon} </span> ${analysis} </div> </li> </ul> </div> </div>`;
+  item += ` <div class="${status} flex text-base gap-1"> <span class="material-symbols-outlined align-text-top"> ${icon} </span> ${analysis} </div> </li> </ul> </div> </div>`;
   return item;
 }
 
@@ -810,7 +811,7 @@ function createSeoAnalysis(data, mobileAudit, desktopAudit) {
 function createAnalysisSummary(analysis, score) {
   let status = score == 1 ? "text-green-400" : "text-red-500";
   let icon = score == 1 ? "check_circle" : "error";
-  let item = `<li class="flex items-start gap-1"> <span class="material-symbols-outlined pt-1 ${status}"> ${icon} </span> ${escapeHTML(
+  let item = `<li class="flex items-start gap-1"> <span class="material-symbols-outlined ${status}"> ${icon} </span> ${escapeHTML(
     analysis
   )} </li>`;
   return item;
@@ -1396,7 +1397,6 @@ function navHighlighter() {
     const sectionHeight = current.offsetHeight;
     const sectionTop = current.offsetTop - 50;
     const sectionId = current.getAttribute("id");
-    console.log(sectionHeight, sectionTop, sectionId);
     
     if (
       scrollY > sectionTop &&
