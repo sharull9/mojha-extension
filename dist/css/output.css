@@ -634,6 +634,29 @@ body {
   }
 }
 
+.\!before {
+  -moz-column-break-before: page;
+       break-before: page;
+}
+
+.before {
+  -moz-column-break-before: page;
+       break-before: page;
+}
+
+.after {
+  -moz-column-break-after: page;
+       break-after: page;
+}
+
+#pdf_report>* {
+  font-family: 'Inter', sans-serif;
+}
+
+.pdf_container>div {
+  height: 768px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -828,6 +851,14 @@ body {
   margin-bottom: 1.25rem;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -838,6 +869,10 @@ body {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .box-border {
@@ -947,6 +982,10 @@ body {
   height: 0.5rem;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-\[504px\] {
   height: 504px;
 }
@@ -975,12 +1014,12 @@ body {
   min-height: 504px;
 }
 
-.w-12 {
-  width: 3rem;
-}
-
 .w-2\/6 {
   width: 33.333333%;
+}
+
+.w-7\/12 {
+  width: 58.333333%;
 }
 
 .w-8\/12 {
@@ -993,10 +1032,6 @@ body {
 
 .w-full {
   width: 100%;
-}
-
-.w-7\/12 {
-  width: 58.333333%;
 }
 
 .max-w-\[783px\] {
@@ -1381,10 +1416,6 @@ body {
   grid-template-rows: 48px 1fr 48px;
 }
 
-.grid-rows-\[auto\] {
-  grid-template-rows: auto;
-}
-
 .grid-rows-\[auto_auto_auto\] {
   grid-template-rows: auto auto auto;
 }
@@ -1583,10 +1614,6 @@ body {
 
 .gap-3 {
   gap: 0.75rem;
-}
-
-.gap-4 {
-  gap: 1rem;
 }
 
 .gap-5 {
@@ -2094,6 +2121,11 @@ body {
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
@@ -2102,6 +2134,10 @@ body {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 
 .decoration-slice {
@@ -2122,6 +2158,10 @@ body {
 .box-decoration-clone {
   -webkit-box-decoration-break: clone;
           box-decoration-break: clone;
+}
+
+.bg-cover {
+  background-size: cover;
 }
 
 .bg-fixed {
@@ -2246,6 +2286,11 @@ body {
   padding: 0.75rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -2271,6 +2316,11 @@ body {
   padding-bottom: 0.5rem;
 }
 
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -2284,11 +2334,6 @@ body {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .pb-4 {
@@ -2363,6 +2408,11 @@ body {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-base {
@@ -2494,6 +2544,11 @@ body {
   color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
@@ -2527,6 +2582,11 @@ body {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+
+.text-blue-50 {
+  --tw-text-opacity: 1;
+  color: rgb(239 246 255 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2835,16 +2895,16 @@ body {
   transition-duration: 150ms;
 }
 
+.duration-100 {
+  transition-duration: 100ms;
+}
+
 .duration-200 {
   transition-duration: 200ms;
 }
 
 .duration-300 {
   transition-duration: 300ms;
-}
-
-.duration-100 {
-  transition-duration: 100ms;
 }
 
 .ease-in {
@@ -2906,16 +2966,6 @@ body {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.hover\:bg-green-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-blue-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-blue-100\/20:hover {
   background-color: rgb(219 234 254 / 0.2);
 }
@@ -2927,11 +2977,6 @@ body {
 .hover\:text-blue-500:hover {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
-.hover\:text-blue-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
 .before\:hover\:text-center:hover::before {

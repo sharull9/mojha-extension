@@ -19,7 +19,7 @@
     .tab.active {
         @apply bg-blue-100;
     }
-    
+
     .material-symbols-outlined {
         @apply text-base;
     }
@@ -57,5 +57,21 @@
             right: 0;
             left: unset;
         }
+    }
+
+    .before {
+        @apply break-before-page;
+    }
+
+    .after {
+        @apply break-after-page;
+    }
+
+    #pdf_report>* {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .pdf_container>div {
+        @apply h-[768px];
     }
 }

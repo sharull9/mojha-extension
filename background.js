@@ -5,6 +5,12 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
   document.getElementById("site_link").setAttribute("href", tabUrl);
   document.getElementById("url").value = tabUrl;
 
+  fetch('https://mojha.com/user/details')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+
   getSeoResult()
 });
 

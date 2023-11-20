@@ -1422,3 +1422,37 @@ function navHighlighter() {
     }
   });
 }
+
+function generatePDF() {
+  const url = document.getElementById("url").value;
+  document.getElementById("report_url").innerText = url;
+  let currentTime = new Date().toDateString();
+  document.getElementById("report_generated").innerText = currentTime;
+
+  const element = document.getElementById("pdf_result");
+  const pagebreak = { mode: "css" };
+  const filename = "mojha-seo-result.pdf";
+  const enableLinks = true;
+  const jsPDF = {
+    orientation: "landscape",
+    unit: "px",
+    format: [1366, 768],
+    compressPDF: false,
+    x: 5,
+    y: 5,
+    html2canvas: {
+      useCORS: true,
+    },
+  };
+  html2pdf()
+    .from(element)
+    .set({
+      filename,
+      pagebreak,
+      enableLinks,
+      jsPDF,
+    })
+    .save();
+}
+
+document.getElementById("pdf_download").onclick = generatePDF;
