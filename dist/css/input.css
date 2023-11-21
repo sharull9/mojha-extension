@@ -74,4 +74,30 @@
     .pdf_container>div {
         @apply h-[768px];
     }
+
+    tbody>tr,
+    thead>tr {
+        @apply divide-x;
+    }
+
+    thead>tr>th {
+        @apply text-left px-4 py-2;
+    }
+
+    tbody>tr>td {
+        @apply px-4 py-2;
+    }
+
+    .index-table {
+        @apply bg-white border rounded-lg;
+    }
+    .index-table > table {
+        @apply text-base divide-y w-full;
+    }
+    .index-table > table > tbody > tr > td:last-child {
+        @apply text-center;
+    }
+    .index-table > table > thead > tr > th:last-child {
+        @apply text-center;
+    }
 }

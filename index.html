@@ -16,11 +16,16 @@
     rel="stylesheet">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/dist/css/output.css">
 </head>
 
-<body class="max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative overflow-hidden">
-  <div class="grid grid-rows-[48px_1fr_48px]">
+<body>
+  <div class="grid grid-rows-[48px_1fr_48px] max-w-[783px] w-[783px] h-[600px] max-h-[600px] relative">
     <header class="px-3 w-full grid grid-cols-12 gap-3 border-b h-12 items-center text-sm">
       <div class="col-span-2">
         <img src="https://mojha.com/mojha.jpg" class="object-contain h-12" alt="">
@@ -62,8 +67,8 @@
       </button>
     </footer>
   </div>
-  <div id="pdf_result">
-    <div style="width: 1366px; min-height: 768px;" class="mx-auto flex flex-col pdf_container">
+  <div id="pdf_result" class="w-full text-base">
+    <div class="pdf_container grid grid-rows-[768px]">
       <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
         <div class="flex flex-col items-center h-full justify-between py-20 gap-1">
           <img src="/dist/assets/mojha.jpg" style="width: 295px" class="mix-blend-darken" alt="">
@@ -78,16 +83,1396 @@
           </div>
         </div>
       </div>
-      <div style="background-image: url('/dist/assets/bg.png');" class="w-100 bg-cover">
-        <div class="flex flex-col items-center h-100">
-          <div class="header mb-auto w-100 h-15 p-2 bg-white flex items-center bg-opacity-50">
-            <img src="/dist/assets/dist.jpg" class="h-20 mix-blend-darken" alt="">
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
           </div>
-          <div class=""></div>
-          <div class="footer mt-auto w-100 h-15 p-2 bg-white flex items-center bg-opacity-50"></div>
+          <div class="w-10/12 mx-auto grid grid-cols-2 gap-4">
+            <div class="index-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-3/4">Title</th>
+                    <th class="w-1/4">Page No.</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y">
+                  <tr>
+                    <td>Overview</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Meta Tag Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Header Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Page Structure Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Image Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Link Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Page Quality Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Server Analysis</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="index-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-3/4">Title</th>
+                    <th class="w-1/4">Page No.</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y">
+                  <tr>
+                    <td>Security Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Accessibility Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Code Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Domain Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Socal Analysis</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Advance SEO</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Issue to fixed</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full flex justify-between">
+              <p class="font-semibold">SEO Audit Report</p>
+
+              <div class="divide-x">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+
+            </div>
+
+          </div>
         </div>
       </div>
-
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Meta Analysis
+                </h1>
+              </div>
+              <div class="bg-white/80 border rounded-lg">
+                <div class="border-b px-4 py-2">
+                  <h3 class="text-lg font-medium">Meta Tag Title</h3>
+                </div>
+                <div class="p-4 pt-2 space-y-2">
+                  <p class="line-clamp-1 text-xl font-semibold">Interview Mania: India's largest site for BANK, SSC,
+                    RAILWAY exams and campus
+                    placement
+                    preparation.Interview Mania: India's largest site for BANK, SSC, RAILWAY exams and campus placement
+                    preparation.Interview Mania: India's largest site for BANK, SSC, RAILWAY exams and campus placement
+                    preparation.</p>
+                  <ul class="space-y-2">
+                    <li class="flex gap-2 items-center">
+                      <div
+                        class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                        <p class="text-sm">Failed</p>
+                      </div>
+                      <p>Ideally your title tag should contain between 10 and 70 charecters (yours is 105 charecter)</p>
+                    </li>
+                    <li class="flex gap-2 items-center">
+                      <div
+                        class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                        <p class="text-sm">Passed</p>
+                      </div>
+                      <p>Document has a `&lt;title&gt;` element</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="bg-white/80 border rounded-lg">
+                <div class="border-b px-4 py-2">
+                  <h3 class="text-lg font-medium">Meta Description</h3>
+                </div>
+                <div class="p-4 pt-2 space-y-2">
+                  <p class="line-clamp-2 text-xl font-semibold">Interview Mania: India's largest site for BANK, SSC,
+                    RAILWAY exams and campus
+                    placement
+                    preparation. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab animi beatae sunt est hic
+                    qui et totam exercitationem quod veritatis molestiae, earum ipsa quos dolorem voluptatibus
+                    perferendis quibusdam recusandae id!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab
+                    animi beatae sunt est hic qui et totam exercitationem quod
+                    veritatis molestiae, earum ipsa quos dolorem voluptatibus perferendis quibusdam recusandae id!</p>
+                  <ul class="space-y-2">
+                    <li class="flex gap-2 items-center">
+                      <div
+                        class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                        <p class="text-sm">Failed</p>
+                      </div>
+                      <p>Meta descriptions should contains between 160 to 320 charecters (yours is 104 charecters)</p>
+                    </li>
+                    <li class="flex gap-2 items-center">
+                      <div
+                        class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                        <p class="text-sm">Passed</p>
+                      </div>
+                      <p>Document has a meta description</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="bg-white/80 border rounded-lg">
+                <div class="border-b px-4 py-2">
+                  <h3 class="text-lg font-medium">Keywords</h3>
+                </div>
+                <div class="p-4 space-y-2">
+                  <div class="flex gap-2 overflow-hidden">
+                    <p class="border rounded-lg p-2 whitespace-nowrap">Aptitude questions</p>
+                    <p class="border rounded-lg p-2 whitespace-nowrap">Reasoning Questions</p>
+                    <p class="border rounded-lg p-2 whitespace-nowrap">BANK exam</p>
+                    <p class="border rounded-lg p-2 whitespace-nowrap">SSC exam</p>
+                    <p class="border rounded-lg p-2 whitespace-nowrap">campus placement</p>
+                    <p class="border rounded-lg p-2 whitespace-nowrap">placement</p>
+                  </div>
+                  <ul class="space-y-2">
+                    <li class="flex gap-2 items-center text-green-500">
+                      <div
+                        class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                        <p class="text-sm">Passed</p>
+                      </div>
+                      <p>Meta keywords are no longer considered a relevant ranking factor by major search engines such
+                        as
+                        Google.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>3</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Heading Analysis
+                </h1>
+              </div>
+              <div class="bg-white/80">
+                <ul class="space-y-2">
+                  <li class="flex gap-2 items-center">
+                    <div
+                      class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                      <p class="text-sm">Failed</p>
+                    </div>
+                    <p>Heading elements are not in a sequentially-descending order</p>
+                  </li>
+                  <li class="flex gap-2 items-center">
+                    <div
+                      class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                      <p class="text-sm">Failed</p>
+                    </div>
+                    <p>No H1 tag found. Consider adding exactly one H1 tag for better SEO.</p>
+                  </li>
+                </ul>
+                <hr class="my-5">
+                <div class="grid grid-cols-6 gap-3">
+                  <div class="border rounded-lg">
+                    <div class="px-4 py-2 border-b">
+                      <p class="text-center">H1</p>
+                    </div>
+                    <div class="px-4 py-2">
+                      <p class="text-center">0</p>
+                    </div>
+                  </div>
+                  <div class="border rounded-lg">
+                    <div class="px-4 py-2 border-b">
+                      <p class="text-center">H2</p>
+                    </div>
+                    <div class="px-4 py-2">
+                      <p class="text-center">0</p>
+                    </div>
+                  </div>
+                  <div class="border rounded-lg">
+                    <div class="px-4 py-2 border-b">
+                      <p class="text-center">H3</p>
+                    </div>
+                    <div class="px-4 py-2">
+                      <p class="text-center">0</p>
+                    </div>
+                  </div>
+                  <div class="border rounded-lg">
+                    <div class="px-4 py-2 border-b">
+                      <p class="text-center">H4</p>
+                    </div>
+                    <div class="px-4 py-2">
+                      <p class="text-center">0</p>
+                    </div>
+                  </div>
+                  <div class="border rounded-lg">
+                    <div class="px-4 py-2 border-b">
+                      <p class="text-center">H5</p>
+                    </div>
+                    <div class="px-4 py-2">
+                      <p class="text-center">0</p>
+                    </div>
+                  </div>
+                  <div class="border rounded-lg">
+                    <div class="px-4 py-2 border-b">
+                      <p class="text-center">H6</p>
+                    </div>
+                    <div class="px-4 py-2">
+                      <p class="text-center">0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>4</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Page Structure Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Page has the HTML doctype</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Doctype is not placed at the beginning.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>3 bold tags found. We recommend limiting the total number of tags on this page to a maximum of
+                    17.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Good, your website doesn't have iframe.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Good, your website doesn't have frameset.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>favicon.ico not present in root folder.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Image Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>3 images are without alt tags.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Displays images with incorrect aspect ratio</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Serves images with appropriate resolution</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Image elements do not have explicit `width` and `height`</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Link Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>183 duplicate links found.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>38 duplicate anchor text found.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>No generic anchor text found.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>205 internal links found on this page, we recommend less than 100 internal links.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>3 external links found on this page, we recommend less than 15 external links.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Page Quality Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>This page contains 858 words. Article with more than 1000 words rank better</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>More than 15% of the text are stop words.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Avoid an excessive DOM size</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Visual order on the page follows DOM order</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Server Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Page has successful HTTP status code</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Avoid multiple page redirects</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>The www and non-www versions are redirecting to the same page.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>The HTML document's file size is optimal(224 KB).</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Security Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Does not use HTTPS</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Speed Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Root document took 100 ms</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>This webpage is not using the HTTP/2 protocol</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>This page uses GZip for compressed data transmission.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Eliminate render-blocking resources</p>
+                </li>
+              </ul>
+              <div class="border rounded-lg">
+                <div class="px-4 py-2 border-b font-semibold">
+                  <p>Page Load Speed</p>
+                </div>
+                <div class="px-4 py-2">
+                  <ul id="ps-page-load-speed" class="space-y-1 text-base">
+                    <div class="items-center gap-1 grid grid-cols-12 text-sm">
+                      <div class="col-span-3">
+                        <p class="mb-0 truncate font-medium">First response</p>
+                      </div>
+                      <div class="relative col-span-7 h-2 bg-gray-100 w-full rounded-lg overflow-hidden">
+                        <div class="absolute w-full h-2 bg-blue-700 top-0 bottom-0"
+                          style="width: 3.0800256668805575%; left: 0%; opacity: 0.75;">
+                        </div>
+                      </div>
+                      <div class="col-span-2">
+                        <p class="text-end font-medium">0.2ms</p>
+                      </div>
+                    </div>
+                    <div class="items-center gap-1 grid grid-cols-12 text-sm">
+                      <div class="col-span-3">
+                        <p class="mb-0 truncate font-medium">Resources Loaded</p>
+                      </div>
+                      <div class="relative col-span-7 h-2 bg-gray-100 w-full rounded-lg overflow-hidden">
+                        <div class="absolute w-full h-2 bg-blue-700 top-0 bottom-0"
+                          style="width: 48.510404253368776%; left: 3.0800256668805575%; opacity: 0.75;">
+                        </div>
+                      </div>
+                      <div class="col-span-2">
+                        <p class="text-end font-medium">2.6ms</p>
+                      </div>
+                    </div>
+                    <div class="items-center gap-1 grid grid-cols-12 text-sm">
+                      <div class="col-span-3">
+                        <p class="mb-0 truncate font-medium">Page Rendered</p>
+                      </div>
+                      <div class="relative col-span-7 h-2 bg-gray-100 w-full rounded-lg overflow-hidden">
+                        <div class="absolute w-full h-2 bg-blue-700 top-0 bottom-0"
+                          style="width: 48.409570079750665%; left: 51.590429920249335%; opacity: 0.75;">
+                        </div>
+                      </div>
+                      <div class="col-span-2">
+                        <p class="text-end font-medium">2.6ms</p>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+                <div class="flex gap-2 px-4 py-2 border-t">
+                  <p>Total time:</p>
+                  <p id="page-load-total-time" class="text-blue-800">5.45 sec</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Accessibility Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>`&lt;html&gt;` element has a `[lang]` attribute</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>`&lt;html&gt;` element has a valid value for its `[lang]` attribute</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>List items (`&lt;li&gt;`) are contained within `&lt;ul&gt;`, `&lt;ol&gt;` or `&lt;menu&gt;` parent
+                    elements</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>`[aria-*]` attributes match their roles</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>`[aria-hidden="true"]` is not present on the document `&lt;body&gt;`</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>`[aria-*]` attributes are valid and not misspelled</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>`[aria-*]` attributes have valid values</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-red-500/20 text-red-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Failed</p>
+                  </div>
+                  <p>Background and foreground colors do not have a sufficient contrast ratio.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Mobile Usability
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Has a `&lt;meta name="viewport"&gt;` tag with `width` or `initial-scale`</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Tap targets are sized appropriately</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Code Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>No browser errors logged to the console</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Domain Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Domain age: 8 year 4 month 9 day</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Your domain is 1328 days old. Older domains rank higher in Google.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Social Analysis
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>No browser errors logged to the console</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Basic SEO
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>robots.txt is valid</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Sitemap not found.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Document avoids plugins</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Advance SEO
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Page isn’t blocked from indexing</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Links are not crawlable</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Document avoids plugins</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  User Experience
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Document uses legible font sizes</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Ensure text remains visible during webfont load</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Allows users to paste into input fields</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Avoids requesting the geolocation permission on page load</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Avoids requesting the notification permission on page load</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center justify-between h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto">
+            <div class="w-full grid grid-cols-1 gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold">
+                  Best Practices
+                </h1>
+              </div>
+              <ul class="space-y-2 p-4">
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Google Analytics is not a SEO factor but it will help in improving SEO.</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Document has a valid `rel=canonical`</p>
+                </li>
+                <li class="flex gap-2 items-center">
+                  <div
+                    class="py-0.5 px-2 border bg-green-500/20 text-green-500 rounded-lg w-[70px] flex items-center justify-center">
+                    <p class="text-sm">Passed</p>
+                  </div>
+                  <p>Charset: Search engine can easly undertand the content.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url('/dist/assets/bg.png');" class="w-full bg-cover">
+        <div class="flex flex-col items-center h-full">
+          <div class="header w-full h-15 p-2 bg-white flex items-center bg-opacity-50 border-b border-gray-400">
+            <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+              class="flex justify-between items-center w-full text-xl">
+              <img src="/dist/assets/mojha.jpg" class="h-10 mix-blend-darken" alt="">
+              <p>November 1, 2017</p>
+            </div>
+          </div>
+          <div class="w-10/12 mx-auto mt-10 h-full">
+            <div class="w-full h-full flex flex-col gap-4">
+              <div class="flex items-center justify-center">
+                <h1 class="text-2xl font-bold text-[#747ed1]">
+                  Task list for SEO improvement
+                </h1>
+              </div>
+              <div class="h-full flex flex-col justify-center">
+                <ul class="space-y-2 px-4">
+                  <li class="flex gap-2 items-center justify-between">
+                    <p> Ensure all images have alt tags.</p>
+                    <div class="text-yellow-500 px-2 py-1 rounded-lg border-yellow-500 bg-yellow-500/10"> MEDIUM </div>
+                  </li>
+                  <li class="flex gap-2 items-center justify-between">
+                    <p> Ensure all images have alt tags.</p>
+                    <div class="text-red-500 px-2 py-1 rounded-lg border-red-500 bg-red-500/10"> HIGH </div>
+                  </li>
+                  <li class="flex gap-2 items-center justify-between">
+                    <p> Ensure all images have alt tags.</p>
+                    <div class="text-blue-500 px-2 py-1 rounded-lg border-blue-500 bg-blue-500/10"> LOW </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Sofia Sans Semi Condensed', sans-serif;"
+            class="footer mt-auto text-xl w-full h-14 p-2 bg-white/50 flex items-center border-t border-gray-400">
+            <div class="w-full grid grid-cols-5 justify-between">
+              <p class="font-semibold col-span-2">SEO Audit Report</p>
+              <div class="flex items-center justify-center">
+                <p>5</p>
+              </div>
+              <div class="divide-x col-span-2 flex justify-end">
+                <a class="border-black px-2" href="https://mojha.com">mojha.com</a>
+                <a class="border-black px-2" href="mailto:contact@mojha.com">contact@mojha.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

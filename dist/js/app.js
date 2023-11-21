@@ -246,9 +246,9 @@ function createResultSummary(data, mobileAudit, desktopAudit) {
     "Render Blocking Resources",
     [
       desktopAudit.audits["render-blocking-resources"].title +
-        " (" +
-        desktopAudit.audits["render-blocking-resources"].displayValue +
-        ")",
+      " (" +
+      desktopAudit.audits["render-blocking-resources"].displayValue +
+      ")",
     ],
     [desktopAudit.audits["render-blocking-resources"].score]
   );
@@ -580,14 +580,14 @@ function getTaskList(heading, priority) {
     priority == "HIGH"
       ? "bg-red-50"
       : priority == "MEDIUM"
-      ? "bg-yellow-50"
-      : "bg-green-50";
+        ? "bg-yellow-50"
+        : "bg-green-50";
   let badgeText =
     priority == "HIGH"
       ? "text-red-500"
       : priority == "MEDIUM"
-      ? "text-yellow-500"
-      : "text-green-500";
+        ? "text-yellow-500"
+        : "text-green-500";
   let item = `<li>
                 <div class='flex items-center justify-between p-2 border rounded-lg ${status}'>
                   <div class="flex-grow-1"> <p class="mb-0 "> ${heading} </p> </div>
@@ -927,9 +927,9 @@ function createPageSpeed(data, mobileAudit, desktopAudit) {
   );
   speedAnalysis.innerHTML += createAnalysisSummary(
     desktopAudit.audits["render-blocking-resources"].title +
-      " (" +
-      desktopAudit.audits["render-blocking-resources"].displayValue +
-      ")",
+    " (" +
+    desktopAudit.audits["render-blocking-resources"].displayValue +
+    ")",
     desktopAudit.audits["render-blocking-resources"].score
   );
 
@@ -1243,29 +1243,29 @@ function createOptimisation(data, mobileAudit, desktopAudit) {
 
   let cssMinification = Math.round(
     cssTotal -
-      desktopAudit.audits["unminified-css"].details?.overallSavingsBytes / 1024
+    desktopAudit.audits["unminified-css"].details?.overallSavingsBytes / 1024
   );
   let jsMinification = Math.round(
     jsTotal -
-      desktopAudit.audits["unminified-javascript"].details
-        ?.overallSavingsBytes /
-        1024
+    desktopAudit.audits["unminified-javascript"].details
+      ?.overallSavingsBytes /
+    1024
   );
   let cssOptimisation = Math.round(
     cssMinification -
-      desktopAudit.audits["unused-css-rules"].details?.overallSavingsBytes /
-        1024
+    desktopAudit.audits["unused-css-rules"].details?.overallSavingsBytes /
+    1024
   );
   let jsOptimisation = Math.round(
     jsMinification -
-      desktopAudit.audits["unused-javascript"].details?.overallSavingsBytes /
-        1024
+    desktopAudit.audits["unused-javascript"].details?.overallSavingsBytes /
+    1024
   );
   let imageOptimisation = Math.round(
     imageTotal -
-      desktopAudit.audits["uses-optimized-images"].details
-        ?.overallSavingsBytes /
-        1024
+    desktopAudit.audits["uses-optimized-images"].details
+      ?.overallSavingsBytes /
+    1024
   );
 
   let cssSavePercentage = (100 * cssOptimisation) / cssTotal;
@@ -1379,9 +1379,8 @@ function createOptimisationCard({
           </div>
         </div>
         <div class="p-2 bg-blue-300">
-          <p class="text-center">Optimisation upto ${
-            compressionValue ? compressionValue : minificationValue
-          } kB</p>
+          <p class="text-center">Optimisation upto ${compressionValue ? compressionValue : minificationValue
+    } kB</p>
         </div>
         <div class='flex flex-col border divide-y text-sm'>
           <div class="grid grid-cols-5">
@@ -1456,3 +1455,43 @@ function generatePDF() {
 }
 
 document.getElementById("pdf_download").onclick = generatePDF;
+
+let contentList = [
+  "Overview",
+  "Meta Tag Analysis",
+  "Header Analysis",
+  "Page Structure Analysis",
+  "Image Analysis",
+  "Link Analysis",
+  "Page Quality Analysis",
+  "Server Analysis",
+  "Security Analysis",
+  "Accessibility Analysis",
+  "Mobile Usability ",
+  "Code Analysis",
+  "Domain Analysis",
+  "Socal Analysis",
+  "Advance SEO",
+  "Issue to fixed",
+];
+
+
+
+function createMessage({ score, message }) {
+  let status = score === 0 ? "text-red-500 bg-red-500/20" : "text-green-500 bg-green-500/20";
+  let icon = score === 0 ? "Failed" : "Passed";
+
+  let item = `<li class="flex gap-2 items-center">
+                <div class="py-0.5 px-2 border rounded-lg w-[70px] flex items-center justify-center ${status}">
+                  <p class="text-sm">${icon}</p>
+                </div>
+                <p>${escapeHTML(message)}</p>
+              </li>`
+  return item;
+}
+
+function escapeHTML(unsafeText) {
+  let div = document.createElement("div");
+  div.innerText = unsafeText;
+  return div.innerHTML;
+}
